@@ -1,0 +1,90 @@
+.addColor(@name, @color, @contrast: false) {
+  @list: ~'',
+  ~'--hover:hover',
+  ~'--focus:focus';
+  .generate-classes(@i: length(@list)) when (@i > 0) {
+      .generate-classes(@i - 1);
+      @prefix: extract(@list, @i);
+      .addContrast() when not (@contrast=false) {
+          color: @contrast;
+      }
+      .@{name}@{prefix} {
+          .addContrast();
+          background-color: @color;
+      }
+      .@{name}-contrast@{prefix} {
+          .addContrast()
+      }
+      .@{name}-text@{prefix} {
+          color: @color;
+      }
+      .@{name}-bg@{prefix} {
+          background-color: @color;
+      }
+      .@{name}-ba@{prefix} {
+          border-color: @color;
+      }
+      .@{name}-bt@{prefix} {
+          border-top-color: @color;
+      }
+      .@{name}-br@{prefix} {
+          border-right-color: @color;
+      }
+      .@{name}-bb@{prefix} {
+          border-bottom-color: @color;
+      }
+      .@{name}-bl@{prefix} {
+          border-left-color: @color;
+      }
+      .@{name}-o@{prefix} {
+          outline-color: @color;
+      }
+      .@{name}-f@{prefix} {
+          fill: @color;
+      }
+      .@{name}-s@{prefix} {
+          stroke: @color;
+      }
+  }
+  .generate-classes()
+}
+
+.addTextColor(@name, @color, @contrast: false) {
+  @list: ~'',
+  ~'--hover:hover',
+  ~'--focus:focus';
+  .generate-classes(@i: length(@list)) when (@i > 0) {
+      .generate-classes(@i - 1);
+      @prefix: extract(@list, @i);
+      .@{name}-text@{prefix} {
+          color: @color;
+      }
+  }
+  .generate-classes()
+}
+
+.addBorderColor(@name, @color, @contrast: false) {
+  @list: ~'',
+  ~'--hover:hover',
+  ~'--focus:focus';
+  .generate-classes(@i: length(@list)) when (@i > 0) {
+      .generate-classes(@i - 1);
+      @prefix: extract(@list, @i);
+      .@{name}-b@{prefix} {
+          border-color: @color;
+      }
+      .@{name}-bt@{prefix} {
+          border-top-color: @color;
+      }
+      .@{name}-br@{prefix} {
+          border-right-color: @color;
+      }
+      .@{name}-bb@{prefix} {
+          border-bottom-color: @color;
+      }
+      .@{name}-bl@{prefix} {
+          border-left-color: @color;
+      }
+  }
+  .generate-classes()
+}

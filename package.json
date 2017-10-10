@@ -1,0 +1,12 @@
+{
+  "name": "functional-theme",
+  "version": "1.0.0",
+  "description": "This module will let you seamlessly create and integrate modular themes using predefined mixins. `SaSS` and `Less` configurations are available.",
+  "keywords": [
+    "Functional CSS",
+    "CSS",
+    "Theme"
+  ],
+  "author": "Rinto Jose",
+  "license": "MIT"
+}

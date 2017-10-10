@@ -1,0 +1,86 @@
+
+$colors: ();
+@function defineColor($name, $color, $text: false) {
+  $colors: map-merge($colors, ($name: $color)) !global;
+  @if $text {
+    $colors: map-merge($colors, (#{$name}-contrast: $text)) !global;
+  }
+  @return $color;
+}
+
+@mixin addColor($name, $color, $text: false) {
+  $list: '', '--hover:hover', '--focus:focus';
+  @each $type in $list {
+    .#{$name}#{$type} {
+      @if $text {
+        color: $text;
+      }
+      background-color: defineColor($name, $color, $text);
+    }
+    @if $text {
+      .#{$name}-contrast#{$type} {
+        color: $text;
+      }
+    }
+    .#{$name}-text#{$type} {
+      color: $color;
+    }
+    .#{$name}-bg#{$type} {
+      background-color: $color;
+    }
+    .#{$name}-ba#{$type} {
+      border-color: $color;
+    }
+    .#{$name}-bt#{$type} {
+      border-top-color: $color;
+    }
+    .#{$name}-br#{$type} {
+      border-right-color: $color;
+    }
+    .#{$name}-bb#{$type} {
+      border-bottom-color: $color;
+    }
+    .#{$name}-bl#{$type} {
+      border-left-color: $color;
+    }
+    .#{$name}-o#{$type} {
+      outline-color: $color;
+    }
+    .#{$name}-f#{$type} {
+      fill: $color;
+    }
+    .#{$name}-s#{$type} {
+      stroke: $color;
+    }
+  }
+}
+
+@mixin addTextColor($name, $color, $text: false) {
+  $list: '', '--hover:hover', '--focus:focus';
+  @each $type in $list {
+    .#{$name}-text#{$type} {
+      color: $color;
+    }
+  }
+}
+
+@mixin addBorderColor($name, $color, $text: false) {
+  $list: '', '--hover:hover', '--focus:focus';
+  @each $type in $list {
+    .#{$name}-ba#{$type} {
+      border-color: $color;
+    }
+    .#{$name}-bt#{$type} {
+      border-top-color: $color;
+    }
+    .#{$name}-br#{$type} {
+      border-right-color: $color;
+    }
+    .#{$name}-bb#{$type} {
+      border-bottom-color: $color;
+    }
+    .#{$name}-bl#{$type} {
+      border-left-color: $color;
+    }
+  }
+}
